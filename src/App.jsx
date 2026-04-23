@@ -78,7 +78,7 @@ function App() {
 
   // active nav section highlight
   useEffect(() => {
-    const sections = ["about", "skills", "projects", "contact"]
+    const sections = ["about", "skills", "experience", "projects", "contact"]
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -175,6 +175,7 @@ function App() {
         <div className="flex items-center gap-6 text-sm">
           {navLink("#about", "About")}
           {navLink("#skills", "Skills")}
+          {navLink("#experience", "Experience")}
           {navLink("#projects", "Projects")}
           {navLink("#contact", "Contact")}
 
@@ -364,6 +365,113 @@ function App() {
           ))}
         </div>
       </section>
+
+      {/* experience */}
+<section className="relative z-10 px-6 md:px-16 py-16 md:py-20">
+  <h2 className="text-4xl font-bold mb-16 text-center">Experience</h2>
+
+  <div className="max-w-2xl mx-auto relative">
+
+    {/* garis vertikal */}
+    <div className={`absolute left-6 top-0 bottom-0 w-[2px] ${
+      dark ? "bg-white/10" : "bg-black/10"
+    }`} />
+
+    {[
+      {
+        role: "Receptionist & Admin Staff",
+        place: "Latihan Mengemudi Santa",
+        period: "Jan 2023 – Present",
+        desc: [
+          "Handled scheduling, appointments, and internal communication",
+          "Managed daily administrative tasks including data entry and document filing",
+          "Prepared reports and assisted with basic accounting tasks",
+        ],
+        icon: "💼",
+        current: true,
+      },
+      {
+        role: "Divisi Publikasi & Dokumentasi",
+        place: "PMK Universitas Nurtanio",
+        period: "Oct 2024 – Present",
+        desc: [
+          "Created visual content and event documentation",
+          "Handled internal communication and design materials",
+        ],
+        icon: "🎨",
+        current: true,
+      },
+      {
+        role: "Mitra Waralaba",
+        place: "Teh Iketan",
+        period: "Jan 2025 – Apr 2025",
+        desc: [
+          "Managed daily operations of a small beverage business",
+          "Handled inventory, finances, and stock control",
+          "Balanced entrepreneurial responsibilities with work and academic commitments",
+        ],
+        icon: "🍵",
+        current: false,
+      },
+      {
+        role: "Junior Cook",
+        place: "Belva Huis — Hotel, Restaurant & Coffee Shop",
+        period: "Feb 2022 – Dec 2022",
+        desc: [
+          "Conducted daily, weekly, and monthly stock checks",
+          "Maintained food safety and kitchen hygiene standards",
+          "Assisted in translating orders for international guests",
+        ],
+        icon: "👨‍🍳",
+        current: false,
+      },
+    ].map((item, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: i * 0.1 }}
+        viewport={{ once: true }}
+        className="relative pl-16 mb-12 last:mb-0"
+      >
+        {/* icon bulat */}
+        <div className={`absolute left-0 w-12 h-12 rounded-full flex items-center justify-center text-xl z-10 ${
+          dark ? "bg-[#1a4a32] border-2 border-[#839958]/40" : "bg-white border-2 border-[#839958]/40"
+        }`}>
+          {item.icon}
+        </div>
+
+        {/* card */}
+        <div className={`rounded-xl p-5 ${
+          dark
+            ? "bg-[#123c2c]/60 backdrop-blur-md border border-white/10"
+            : "bg-white/70 backdrop-blur-md border border-white/40"
+        }`}>
+          <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
+            <h3 className="font-semibold text-base">{item.role}</h3>
+            {item.current && (
+              <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                Current
+              </span>
+            )}
+          </div>
+
+          <p className="text-sm text-[#839958] font-medium mb-1">{item.place}</p>
+          <p className="text-xs opacity-50 mb-3">{item.period}</p>
+
+          <ul className="space-y-1">
+            {item.desc.map((d, j) => (
+              <li key={j} className="text-sm opacity-70 flex gap-2">
+                <span className="mt-1 flex-shrink-0 w-1 h-1 rounded-full bg-[#839958] block" style={{marginTop: "7px"}}/>
+                {d}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</section>
 
       {/* projects */}
       <section id="projects" className="relative z-10 px-8 md:px-16 py-20">
