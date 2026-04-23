@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+html{
+scroll-behavior: smooth;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-bg {
+  background: linear-gradient(-45deg,#F7F4D5,#e8e3b8,#dfe7c4,#F7F4D5);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+body{
+cursor:auto;
+}
+
+.custom-cursor{
+width:20px;
+height:20px;
+border:2px solid #839958;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+}
